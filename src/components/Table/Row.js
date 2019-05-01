@@ -50,14 +50,13 @@ class TableRow extends React.PureComponent {
   }
 
   render() {
-    const { columns, isSelected, index, className } = this.props
+    const { columns, isSelected, className } = this.props
 
     return (
       <div
         className={cx({
           drixit__Table__Row: true,
-          "drixit__Table__Row--selected": isSelected,
-          "drixit__Table__Row--odd": index % 2 === 0,
+          'drixit__Table__Row--selected': isSelected,
           [className]: className !== null,
         })}
       >
@@ -70,11 +69,16 @@ class TableRow extends React.PureComponent {
 }
 
 TableRow.propTypes = {
+  columns: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  }).isRequired,
   className: PropTypes.string,
   enableSelection: PropTypes.bool,
   isSelected: PropTypes.bool,
   onSelect: PropTypes.func,
-  data: PropTypes.object,
+  data: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   id: PropTypes.number,
   mapRowToValue: PropTypes.func,
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
 
 import Row from './Row'
 import Body from './Body'
@@ -35,7 +34,7 @@ class Table extends React.PureComponent {
       : selectedRows.concat(rowId)
 
     return this.setState({
-      selectedRows: newSelectedRows
+      selectedRows: newSelectedRows,
     }, () => onChangeSelection(rows.filter(row => newSelectedRows.includes(row.id))))
   }
 
@@ -63,6 +62,14 @@ class Table extends React.PureComponent {
 }
 
 Table.propTypes = {
+  columns: Row.propTypes.columns,
+  rows: PropTypes.arrayOf(PropTypes.object), // eslint-disable-line react/forbid-prop-types
+  onChangeSelection: PropTypes.func.isRequired,
+}
+
+Table.defaultProps = {
+  columns: {},
+  rows: [],
 }
 
 export default Table

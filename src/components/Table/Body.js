@@ -11,7 +11,7 @@ class TableBody extends React.PureComponent {
     this.renderRow = this.renderRow.bind(this)
   }
 
-  renderRow(row) {
+  renderRow(row, rowIndex) {
     const { columns, selectedRows, onSelectRow } = this.props
 
     const rowId = row.id
@@ -25,6 +25,9 @@ class TableBody extends React.PureComponent {
         enableSelection
         isSelected={selectedRows.includes(rowId)}
         onSelect={onSelectRow}
+        className={cx({
+          'drixit__Table__Row--odd': rowIndex % 2 === 0,
+        })}
       />
     )
   }
@@ -41,23 +44,16 @@ class TableBody extends React.PureComponent {
 }
 
 TableBody.propTypes = {
-  className: PropTypes.string,
-  index: PropTypes.number,
-  enableSelection: PropTypes.bool,
-  isSelected: PropTypes.bool,
-  onSelect: PropTypes.func,
-  data: PropTypes.object,
-  mapRowToValue: PropTypes.func,
+  columns: Row.propTypes.columns,
+  rows: PropTypes.arrayOf(PropTypes.object), // eslint-disable-line react/forbid-prop-types
+  onSelectRow: PropTypes.func.isRequired,
+  selectedRows: PropTypes.arrayOf(PropTypes.number),
 }
 
 TableBody.defaultProps = {
-  className: null,
-  index: -1,
-  enableSelection: false,
-  isSelected: false,
-  onSelect: null,
-  data: null,
-  mapRowToValue: (column, data) => data[column.id],
+  columns: {},
+  rows: [],
+  selectedRows: [],
 }
 
 export default TableBody

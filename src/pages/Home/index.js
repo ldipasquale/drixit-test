@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Header from 'components/Header'
 import Table from 'components/Table'
@@ -10,13 +9,13 @@ const players = PlayersService.get()
 
 function Home() {
   const columns = [
-    { id: 'name', name: '', },
-    { id: 'acc6%', name: '% de Tiempo<br />Ac 6', style: { textAlign: 'center' }},
-    { id: 'acc6', name: 'Acc B6 Total<br />Eff #', style: { textAlign: 'center' }},
-    { id: 'acc7%', name: '% de Tiempo<br />Ac 7', style: { textAlign: 'center' }},
-    { id: 'acc7', name: 'Acc B7 Total<br />Eff #', style: { textAlign: 'center' }},
-    { id: 'acc8%', name: '% de Tiempo<br />Ac 8', style: { textAlign: 'center' }},
-    { id: 'acc8', name: 'Acc B8 Total<br />Eff #', style: { textAlign: 'center' }},
+    { id: 'name', name: '' },
+    { id: 'acc6%', name: '% de Tiempo<br />Ac 6', style: { textAlign: 'center' } },
+    { id: 'acc6', name: 'Acc B6 Total<br />Eff #', style: { textAlign: 'center' } },
+    { id: 'acc7%', name: '% de Tiempo<br />Ac 7', style: { textAlign: 'center' } },
+    { id: 'acc7', name: 'Acc B7 Total<br />Eff #', style: { textAlign: 'center' } },
+    { id: 'acc8%', name: '% de Tiempo<br />Ac 8', style: { textAlign: 'center' } },
+    { id: 'acc8', name: 'Acc B8 Total<br />Eff #', style: { textAlign: 'center' } },
   ]
 
   return (
