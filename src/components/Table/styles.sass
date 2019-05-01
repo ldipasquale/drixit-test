@@ -1,0 +1,29 @@
+@import "~stylesheets/variables/index.sass"
+
+.drixit
+  &__Table
+    margin-top: 20px
+
+    &__Header
+      background: $colorLightGray
+      text-align: center
+      font-weight: $fontWeightBold
+
+    &__Row
+      display: flex
+      padding: $spacingMedium $spacingStandard
+
+      &:not(&--selected):hover
+        background: $colorLightGray
+
+      &--odd
+        background: $colorLighterGray
+
+      &--selected
+        background: $colorLightBlue
+
+      &__Cell
+        flex: 1
+
+      &__SelectionCell
+        flex: 0.3
