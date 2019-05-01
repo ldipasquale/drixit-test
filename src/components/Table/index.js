@@ -13,10 +13,6 @@ const sortRowsByDirection = {
 }
 
 class Table extends React.PureComponent {
-  static getSortRows(direction) {
-  }
-
-
   constructor(props) {
     super(props)
 

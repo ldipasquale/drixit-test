@@ -30,7 +30,7 @@ class TableHeader extends React.PureComponent {
       id: columnId,
       direction: sorting.id === columnId
         ? nextDirections[sorting.direction]
-        : nextDirections[DIRECTION_NONE]
+        : nextDirections[DIRECTION_NONE],
     })
   }
 
@@ -58,17 +58,17 @@ class TableHeader extends React.PureComponent {
         <div className="drixit__Table__Header__Cell__Sorting">
           <div
             className={cx({
-              "drixit__Table__Header__Cell__Sorting__Icon": true,
-              "drixit__Table__Header__Cell__Sorting__Icon--asc": true,
-              "drixit__Table__Header__Cell__Sorting__Icon--selected": isSorted && sorting.direction === DIRECTION_ASC,
+              drixit__Table__Header__Cell__Sorting__Icon: true,
+              'drixit__Table__Header__Cell__Sorting__Icon--asc': true,
+              'drixit__Table__Header__Cell__Sorting__Icon--selected': isSorted && sorting.direction === DIRECTION_ASC,
             })}
           />
 
           <div
             className={cx({
-              "drixit__Table__Header__Cell__Sorting__Icon": true,
-              "drixit__Table__Header__Cell__Sorting__Icon--desc": true,
-              "drixit__Table__Header__Cell__Sorting__Icon--selected": isSorted && sorting.direction === DIRECTION_DESC,
+              drixit__Table__Header__Cell__Sorting__Icon: true,
+              'drixit__Table__Header__Cell__Sorting__Icon--desc': true,
+              'drixit__Table__Header__Cell__Sorting__Icon--selected': isSorted && sorting.direction === DIRECTION_DESC,
             })}
           />
         </div>

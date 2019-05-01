@@ -53,6 +53,7 @@ class TableRow extends React.PureComponent {
               id={`select${id}`}
               type="checkbox"
               checked={isSelected}
+              onChange={this.handleSelect}
             />
           </React.Fragment>
         )}
@@ -107,7 +108,7 @@ TableRow.defaultProps = {
   onSelect: null,
   data: null,
   id: -1,
-  renderCell: TableRow.renderCell
+  renderCell: TableRow.renderCell,
 }
 
 export default TableRow

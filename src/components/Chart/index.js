@@ -12,6 +12,7 @@ class Chart extends React.PureComponent {
   static renderBar({ id, name, description, color }) {
     return (
       <Bar
+        key={id}
         dataKey={id}
         name={name}
         description={description}
