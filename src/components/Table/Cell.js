@@ -19,7 +19,7 @@ function TableCell({ children, style, widthMultiplier }) {
 }
 
 TableCell.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   widthMultiplier: PropTypes.number,
 }

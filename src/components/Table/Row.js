@@ -69,11 +69,11 @@ class TableRow extends React.PureComponent {
 }
 
 TableRow.propTypes = {
-  columns: PropTypes.shape({
+  columns: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  }).isRequired,
+  })).isRequired,
   className: PropTypes.string,
   enableSelection: PropTypes.bool,
   isSelected: PropTypes.bool,
