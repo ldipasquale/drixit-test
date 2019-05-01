@@ -34,6 +34,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, './src/components'),
       config: path.resolve(__dirname, './src/config'),
+      constants: path.resolve(__dirname, './src/constants'),
       pages: path.resolve(__dirname, './src/pages'),
       services: path.resolve(__dirname, './src/services'),
       stylesheets: path.resolve(__dirname, './src/stylesheets'),

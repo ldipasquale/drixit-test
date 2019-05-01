@@ -1,22 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Header from 'components/Header'
+import Chart from 'components/Chart'
 import Table from 'components/Table'
 
 import PlayersService from 'services/Players'
 
-const players = PlayersService.get()
+import { tableColumns, chartBars } from './constants'
+
+import './styles.sass'
+
+const originalPlayers = PlayersService.get()
 
 function Home() {
-  const columns = [
-    { id: 'name', name: '' },
-    { id: 'acc6%', name: '% de Tiempo<br />Ac 6', style: { textAlign: 'center' } },
-    { id: 'acc6', name: 'Acc B6 Total<br />Eff #', style: { textAlign: 'center' } },
-    { id: 'acc7%', name: '% de Tiempo<br />Ac 7', style: { textAlign: 'center' } },
-    { id: 'acc7', name: 'Acc B7 Total<br />Eff #', style: { textAlign: 'center' } },
-    { id: 'acc8%', name: '% de Tiempo<br />Ac 8', style: { textAlign: 'center' } },
-    { id: 'acc8', name: 'Acc B8 Total<br />Eff #', style: { textAlign: 'center' } },
-  ]
+  const [players, setPlayers] = useState(originalPlayers)
 
   return (
     <div className="drixit__Home">
@@ -25,10 +22,18 @@ function Home() {
         onDownloadPDF={console.log}
       />
 
+      <Chart
+        className="drixit__Home__Chart"
+        maxPointsAmount={originalPlayers.length}
+        points={players}
+        bars={chartBars}
+      />
+
       <Table
-        columns={columns}
+        className="drixit__Home__Table"
+        columns={tableColumns}
         rows={players}
-        onChangeSelection={console.log}
+        onChangeSelection={setPlayers}
       />
     </div>
   )

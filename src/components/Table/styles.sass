@@ -1,5 +1,7 @@
 @import "~stylesheets/variables/index.sass"
 
+$checkboxSize: 20px
+
 .drixit
   &__Table
     margin-top: 20px
@@ -26,4 +28,31 @@
         flex: 1
 
       &__SelectionCell
-        flex: 0.3
+        width: $checkboxSize
+        margin-right: $spacingMedium
+
+        &__Control
+          height: 20px
+          width: 20px
+          position: relative
+
+          &:after
+            content: ''
+            display: block
+            text-align: center
+            background: white
+            position: absolute
+            top: 0
+            left: 0
+            height: $checkboxSize
+            width: $checkboxSize
+            line-height: $checkboxSize
+            border-radius: $spacingXSmall
+            border: 1px solid $colorGray
+
+          &:checked:after
+            content: '✓'
+
+          &:checked:after,
+          &:hover:after
+            border-color: $colorDarkGray

@@ -34,23 +34,26 @@ class TableRow extends React.PureComponent {
   }
 
   renderSelection() {
-    const { enableSelection, isSelected } = this.props
+    const { enableSelection, isSelected, id } = this.props
 
     return (
       <div className="drixit__Table__Row__SelectionCell">
         {enableSelection && (
-          <input
-            type="checkbox"
-            selected={isSelected}
-            onClick={this.handleSelect}
-          />
+          <React.Fragment>
+            <input
+              className="drixit__Table__Row__SelectionCell__Control"
+              id={`select${id}`}
+              type="checkbox"
+              checked={isSelected}
+            />
+          </React.Fragment>
         )}
       </div>
     )
   }
 
   render() {
-    const { columns, isSelected, className } = this.props
+    const { columns, isSelected, className, enableSelection } = this.props
 
     return (
       <div
@@ -59,6 +62,11 @@ class TableRow extends React.PureComponent {
           'drixit__Table__Row--selected': isSelected,
           [className]: className !== null,
         })}
+        {
+          ...enableSelection && {
+            onClick: this.handleSelect,
+          }
+        }
       >
         {this.renderSelection()}
 
@@ -90,7 +98,13 @@ TableRow.defaultProps = {
   onSelect: null,
   data: null,
   id: -1,
-  mapRowToValue: (column, data) => data[column.id],
+  mapRowToValue: (column, data) => {
+    const value = data[column.id]
+
+    return column.format
+      ? column.format(value, data)
+      : value    
+  },
 }
 
 export default TableRow

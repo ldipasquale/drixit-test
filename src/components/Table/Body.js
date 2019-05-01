@@ -26,7 +26,7 @@ class TableBody extends React.PureComponent {
         isSelected={selectedRows.includes(rowId)}
         onSelect={onSelectRow}
         className={cx({
-          'drixit__Table__Row--odd': rowIndex % 2 === 0,
+          'drixit__Table__Row--odd': rowIndex % 2 === 1,
         })}
       />
     )

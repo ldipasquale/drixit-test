@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 
 import Row from './Row'
 import Body from './Body'
@@ -16,8 +17,8 @@ class Table extends React.PureComponent {
 
     this.state = {
       rows: props.rows.map((row, rowIndex) => ({
-        ...row,
         id: rowIndex,
+        ...row,
       })),
       selectedRows: [],
     }
@@ -30,20 +31,29 @@ class Table extends React.PureComponent {
     const { selectedRows, rows } = this.state
 
     const newSelectedRows = wasSelected
-      ? selectedRows.filter(row => row.id !== rowId)
+      ? selectedRows.filter(selectedRowId => selectedRowId !== rowId)
       : selectedRows.concat(rowId)
+
+    const newSelection = newSelectedRows.length === 0
+      ? rows
+      : rows.filter(row => newSelectedRows.includes(row.id))
 
     return this.setState({
       selectedRows: newSelectedRows,
-    }, () => onChangeSelection(rows.filter(row => newSelectedRows.includes(row.id))))
+    }, () => onChangeSelection(newSelection))
   }
 
   render() {
-    const { columns } = this.props
+    const { columns, className } = this.props
     const { selectedRows, rows } = this.state
 
     return (
-      <div className="drixit__Table">
+      <div
+        className={cx({
+          drixit__Table: true,
+          [className]: className !== null,
+        })}
+      >
         <Row
           columns={columns}
           className="drixit__Table__Header"
