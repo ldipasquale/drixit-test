@@ -75,11 +75,13 @@ Table.propTypes = {
   columns: Row.propTypes.columns,
   rows: PropTypes.arrayOf(PropTypes.object), // eslint-disable-line react/forbid-prop-types
   onChangeSelection: PropTypes.func.isRequired,
+  className: PropTypes.string,
 }
 
 Table.defaultProps = {
   columns: {},
   rows: [],
+  className: null,
 }
 
 export default Table

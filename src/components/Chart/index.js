@@ -48,7 +48,7 @@ class Chart extends React.PureComponent {
   }
 
   render() {
-    const { points, maxPointsAmount, bars, className } = this.props
+    const { points, bars, className } = this.props
 
     return (
       <div
@@ -84,6 +84,19 @@ class Chart extends React.PureComponent {
 
 Chart.propTypes = {
   className: PropTypes.string,
+  maxPointsAmount: PropTypes.number,
+  points: PropTypes.arrayOf(PropTypes.object).isRequired,
+  bars: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+  })).isRequired,
+}
+
+Chart.defaultProps = {
+  className: null,
+  maxPointsAmount: -1,
 }
 
 export default Chart

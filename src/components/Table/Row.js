@@ -103,7 +103,7 @@ TableRow.defaultProps = {
 
     return column.format
       ? column.format(value, data)
-      : value    
+      : value
   },
 }
 
