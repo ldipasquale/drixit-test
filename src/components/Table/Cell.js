@@ -11,15 +11,14 @@ function TableCell({ children, style, widthMultiplier }) {
           flex: widthMultiplier,
         },
       }}
-      dangerouslySetInnerHTML={{
-        __html: children,
-      }}
-    />
+    >
+      {children}
+    </div>
   )
 }
 
 TableCell.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
   style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   widthMultiplier: PropTypes.number,
 }

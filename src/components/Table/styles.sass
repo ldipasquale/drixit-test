@@ -10,6 +10,35 @@ $checkboxSize: 20px
       background: $colorLightGray
       text-align: center
       font-weight: $fontWeightBold
+      position: relative
+
+      &__Cell
+        padding-top: $spacingXSmall
+        padding-bottom: $spacingXHuge
+        position: relative
+        height: 100%
+        cursor: pointer
+
+        &__Sorting
+          position: absolute
+          text-align: center
+          left: 0
+          right: 0
+          bottom: $spacingSmall
+
+          &__Icon
+            line-height: $spacingXSmall
+
+            &:after
+              content: '▾'
+              color: $colorGray
+
+            &--selected:after
+              color: $colorDarkerGray
+
+            &--asc
+              transform: rotate(180deg)
+
 
     &__Row
       display: flex
@@ -40,7 +69,7 @@ $checkboxSize: 20px
             content: ''
             display: block
             text-align: center
-            background: white
+            background: $colorWhite
             position: absolute
             top: 0
             left: 0

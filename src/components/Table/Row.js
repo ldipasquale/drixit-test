@@ -5,6 +5,14 @@ import cx from 'classnames'
 import Cell from './Cell'
 
 class TableRow extends React.PureComponent {
+  static renderCell(column, data) {
+    const value = data[column.id]
+
+    return column.format
+      ? column.format(value, data)
+      : value
+  }
+
   constructor(props) {
     super(props)
 
@@ -20,7 +28,7 @@ class TableRow extends React.PureComponent {
   }
 
   renderCell(column) {
-    const { data, mapRowToValue } = this.props
+    const { data, renderCell } = this.props
 
     return (
       <Cell
@@ -28,7 +36,7 @@ class TableRow extends React.PureComponent {
         widthMultiplier={column.widthMultiplier}
         style={column.style}
       >
-        {mapRowToValue(column, data)}
+        {renderCell(column, data)}
       </Cell>
     )
   }
@@ -81,6 +89,7 @@ TableRow.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    disableSorting: PropTypes.bool,
   })).isRequired,
   className: PropTypes.string,
   enableSelection: PropTypes.bool,
@@ -88,7 +97,7 @@ TableRow.propTypes = {
   onSelect: PropTypes.func,
   data: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   id: PropTypes.number,
-  mapRowToValue: PropTypes.func,
+  renderCell: PropTypes.func,
 }
 
 TableRow.defaultProps = {
@@ -98,13 +107,7 @@ TableRow.defaultProps = {
   onSelect: null,
   data: null,
   id: -1,
-  mapRowToValue: (column, data) => {
-    const value = data[column.id]
-
-    return column.format
-      ? column.format(value, data)
-      : value
-  },
+  renderCell: TableRow.renderCell
 }
 
 export default TableRow

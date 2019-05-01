@@ -18,6 +18,7 @@ export const tableColumns = [
   {
     id: 'name',
     name: '',
+    disableSorting: true,
   },
   {
     ...percentageTableColumn,

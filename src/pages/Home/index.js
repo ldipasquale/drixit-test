@@ -13,7 +13,7 @@ import './styles.sass'
 const originalPlayers = PlayersService.get()
 
 function Home() {
-  const [players, setPlayers] = useState(originalPlayers)
+  const [selectedPlayers, setSelectedPlayers] = useState(originalPlayers)
 
   return (
     <div className="drixit__Home">
@@ -25,15 +25,15 @@ function Home() {
       <Chart
         className="drixit__Home__Chart"
         maxPointsAmount={originalPlayers.length}
-        points={players}
+        points={selectedPlayers}
         bars={chartBars}
       />
 
       <Table
         className="drixit__Home__Table"
         columns={tableColumns}
-        rows={players}
-        onChangeSelection={setPlayers}
+        rows={originalPlayers}
+        onChangeSelection={setSelectedPlayers}
       />
     </div>
   )
